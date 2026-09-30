@@ -1,0 +1,14 @@
+.btn-primary {
+  margin-top: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 28px;
+  background: #000000;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 4px;
+  width: fit-content;
+}

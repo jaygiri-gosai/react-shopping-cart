@@ -1,10 +1,15 @@
+import { Outlet } from "react-router";
+import Nav from "./components/Nav/Nav";
+import Footer from "./components/Footer/Footer";
 import "./App.css";
 
 function App() {
   return (
-    <div>
-      <h1>We are on the App page</h1>
-    </div>
+    <>
+      <Nav />
+      <Outlet />
+      <Footer />
+    </>
   );
 }
 
