@@ -1,0 +1,16 @@
+.subHeading {
+  padding: 64px 64px 32px 64px;
+}
+
+.subHeading > h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.productContainer {
+  padding: 0 64px 64px 64px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}

@@ -1,8 +1,23 @@
+import { useOutletContext } from "react-router";
+import styles from "./Shop.module.css";
+import ProductCard from "./ProductCard";
+
 function Shop() {
+  const { products, error, loading } = useOutletContext();
+
   return (
-    <>
-      <h2>I am on the shop page!</h2>
-    </>
+    <section>
+      <div className={styles.subHeading}>
+        <h1>Shop All</h1>
+      </div>
+      <div className={styles.productContainer}>
+        {loading && <h2>Loading......</h2>}
+        {error && <h2>Unable to load products.</h2>}
+        {!loading &&
+          error === null &&
+          products.map((item) => <ProductCard key={item.id} product={item} />)}
+      </div>
+    </section>
   );
 }
 
