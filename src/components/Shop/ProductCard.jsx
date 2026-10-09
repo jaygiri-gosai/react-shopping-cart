@@ -1,6 +1,6 @@
 import Button from "../Button/Button";
 import styles from "./ProductCard.module.css";
-function ProductCard({ product }) {
+function ProductCard({ product, addToCart }) {
   return (
     <div className={styles.productCard}>
       <img
@@ -10,7 +10,12 @@ function ProductCard({ product }) {
       />
       <p className={styles.productTitle}>{product.title}</p>
       <p className={styles.productPrice}>$ {product.price}</p>
-      <Button title="Add to Cart" btnType="primary" />
+      <Button
+        title="Add to Cart"
+        btnType="primary"
+        fnCall={addToCart}
+        fnCallData={product}
+      />
     </div>
   );
 }

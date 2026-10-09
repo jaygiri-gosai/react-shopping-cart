@@ -1,7 +1,7 @@
 import { Outlet, createMemoryRouter, RouterProvider } from "react-router";
-
-import { test, expect, describe } from "vitest";
+import { vi, test, expect, describe } from "vitest";
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import Shop from "../components/Shop/Shop";
 
 describe("Shop Page", () => {
@@ -107,5 +107,49 @@ describe("Shop Page", () => {
     expect(
       screen.getByRole("button", { name: /Add to Cart/i }),
     ).toBeInTheDocument();
+  });
+
+  test("add a product to cart", async () => {
+    const addToCart = vi.fn();
+    const user = userEvent.setup();
+    const mockProducts = [
+      {
+        id: 1,
+        title: "Test Product",
+        price: 29.99,
+        image: "test-image.jpg",
+      },
+    ];
+
+    function TestLayout() {
+      return (
+        <Outlet
+          context={{
+            products: mockProducts,
+            loading: false,
+            error: null,
+            addToCart: addToCart,
+          }}
+        />
+      );
+    }
+
+    const router = createMemoryRouter([
+      {
+        path: "/",
+        element: <TestLayout />,
+        children: [
+          {
+            index: true,
+            element: <Shop />,
+          },
+        ],
+      },
+    ]);
+
+    render(<RouterProvider router={router} />);
+    const button = screen.getByRole("button", { name: /Add to Cart/i });
+    await user.click(button);
+    expect(addToCart).toHaveBeenCalledWith(mockProducts[0]);
   });
 });
