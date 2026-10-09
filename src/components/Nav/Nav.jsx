@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import styles from "./Nav.module.css";
 import cartIcon from "../../assets/cart.png";
 
-function Nav() {
+function Nav({ cartItems }) {
   return (
     <div className={styles.navContainer}>
       <div className={styles.menu}>
@@ -33,7 +33,10 @@ function Nav() {
       <div className={styles.cartContainer}>
         <Link to="cart" className={styles.cartLink}>
           <img className={styles.cartImg} alt="Cart" src={cartIcon} />
-          <span className={styles.cartCount}>2</span>
+          {console.log(cartItems)}
+          {cartItems.length > 0 && (
+            <span className={styles.cartCount}>{cartItems.length}</span>
+          )}
         </Link>
       </div>
     </div>

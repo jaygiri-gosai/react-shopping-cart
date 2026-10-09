@@ -8,6 +8,23 @@ function App() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [cart, setCart] = useState([]);
+
+  function addToCart(product) {
+    const productExists = cart.some((item) => item.id === product.id);
+    if (productExists) {
+      const updatedCart = cart.map((item) => {
+        if (item.id === product.id) {
+          return { ...item, qty: item.qty + 1 };
+        }
+        return item;
+      });
+
+      setCart(updatedCart);
+    } else {
+      setCart([...cart, { ...product, qty: 1 }]);
+    }
+  }
 
   useEffect(() => {
     async function getProducts() {
@@ -34,8 +51,8 @@ function App() {
 
   return (
     <>
-      <Nav />
-      <Outlet context={{ products, error, loading }} />
+      <Nav cartItems={cart} />
+      <Outlet context={{ products, error, loading, addToCart }} />
       <Footer />
     </>
   );
