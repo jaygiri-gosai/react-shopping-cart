@@ -25,6 +25,10 @@
   letter-spacing: 0.04em;
 }
 
+.logo > a {
+  color: #000000;
+}
+
 .navLink {
   font-size: 14px;
   color: #1a1a1a;

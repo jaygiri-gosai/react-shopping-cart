@@ -1,5 +1,6 @@
+import { Link } from "react-router";
 import styles from "./Hero.module.css";
-import Button from "../Button/Button";
+
 import shopper from "../../assets/shopper.png";
 
 function Hero() {
@@ -12,7 +13,9 @@ function Hero() {
           Considered essentials, built to last well past the season they arrived
           in.
         </p>
-        <Button title="Shop Now" btnType="primary" />
+        <Link to="shop" className={styles.primaryLink}>
+          Shop Now
+        </Link>
       </div>
       <div className={styles.heroImgContainer}>
         <img src={shopper} alt="Shopper Image" />

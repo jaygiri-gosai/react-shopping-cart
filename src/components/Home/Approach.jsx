@@ -1,5 +1,5 @@
 import styles from "./Approach.module.css";
-import Button from "../Button/Button";
+import { Link } from "react-router";
 import stack from "../../assets/stack.png";
 
 function Approach() {
@@ -16,7 +16,9 @@ function Approach() {
           higher standard — better materials, better construction, built to
           outlast the trend cycle.
         </p>
-        <Button title="Shop Now" btnType="primary" />
+        <Link to="shop" className={styles.primaryLink}>
+          Shop Now
+        </Link>
       </div>
     </section>
   );

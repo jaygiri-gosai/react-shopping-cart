@@ -26,6 +26,28 @@ function App() {
     }
   }
 
+  function updateQty(product) {
+    const productExists = cart.some((item) => item.id === product.id);
+    if (productExists) {
+      const updatedCart = cart.map((item) => {
+        if (item.id === product.id) {
+          return { ...item, qty: item.qty - 1 };
+        }
+        return item;
+      });
+
+      setCart(updatedCart);
+    }
+  }
+
+  function removeCartItem(item) {
+    let result = confirm("Are you sure you want to remove the item from cart?");
+    if (result) {
+      let newCart = cart.filter((product) => product.id !== item.id);
+      setCart(newCart);
+    }
+  }
+
   useEffect(() => {
     async function getProducts() {
       try {
@@ -52,7 +74,17 @@ function App() {
   return (
     <>
       <Nav cartItems={cart} />
-      <Outlet context={{ products, error, loading, addToCart }} />
+      <Outlet
+        context={{
+          products,
+          error,
+          loading,
+          addToCart,
+          cart,
+          updateQty,
+          removeCartItem,
+        }}
+      />
       <Footer />
     </>
   );

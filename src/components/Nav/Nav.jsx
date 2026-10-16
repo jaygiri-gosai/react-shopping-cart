@@ -33,7 +33,7 @@ function Nav({ cartItems }) {
       <div className={styles.cartContainer}>
         <Link to="cart" className={styles.cartLink}>
           <img className={styles.cartImg} alt="Cart" src={cartIcon} />
-          {console.log(cartItems)}
+
           {cartItems.length > 0 && (
             <span className={styles.cartCount}>{cartItems.length}</span>
           )}
