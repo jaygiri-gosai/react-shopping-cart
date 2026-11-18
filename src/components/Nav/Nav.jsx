@@ -1,8 +1,12 @@
 import { Link } from "react-router";
 import styles from "./Nav.module.css";
 import cartIcon from "../../assets/cart.png";
+import { ShopContext } from "../../context/ShopContext/ShopContext";
+import { useContext } from "react";
 
-function Nav({ cartItems }) {
+function Nav() {
+  const shopContext = useContext(ShopContext);
+
   return (
     <div className={styles.navContainer}>
       <div className={styles.menu}>
@@ -34,8 +38,8 @@ function Nav({ cartItems }) {
         <Link to="cart" className={styles.cartLink}>
           <img className={styles.cartImg} alt="Cart" src={cartIcon} />
 
-          {cartItems.length > 0 && (
-            <span className={styles.cartCount}>{cartItems.length}</span>
+          {shopContext.cart?.length > 0 && (
+            <span className={styles.cartCount}>{shopContext.cart.length}</span>
           )}
         </Link>
       </div>

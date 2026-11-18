@@ -1,8 +1,10 @@
 import styles from "./Cart.module.css";
 import Button from "../Button/Button";
-import { useOutletContext } from "react-router";
+import { ShopContext } from "../../context/ShopContext/ShopContext";
+import { useContext } from "react";
 function Cart() {
-  const { addToCart, cart, updateQty, removeCartItem } = useOutletContext();
+  const { addToCart, cart, updateQty, removeCartItem } =
+    useContext(ShopContext);
   const totalSum = cart
     .map((item) => item.price * item.qty)
     .reduce((accumulator, current) => accumulator + current, 0)
