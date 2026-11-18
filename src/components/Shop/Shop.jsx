@@ -1,9 +1,10 @@
-import { useOutletContext } from "react-router";
+import { ShopContext } from "../../context/ShopContext/ShopContext";
+import { useContext } from "react";
 import styles from "./Shop.module.css";
 import ProductCard from "./ProductCard";
 
 function Shop() {
-  const { products, error, loading, addToCart } = useOutletContext();
+  const { products, error, loading, addToCart } = useContext(ShopContext);
 
   return (
     <section>
